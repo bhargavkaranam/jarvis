@@ -10,11 +10,27 @@ let api = {
 		$.ajax({
 			url: url,
 			type: type,
-			data: data,
+			data: '' + data,
 			dataType: 'json',
 			success: function(data) {
+				
 				return callback(data)
+			},
+			error: function(a,b,c) {
+				alert('here');
 			}
 		})
+	},
+
+	sendEmail: function(to, subject, body) {
+		Email.send("bhargav.karanam@gmail.com",
+			to,
+			subject,
+			body,
+			"smtp.gmail.com",
+			config.email.username,
+			config.email.password);
 	}
+
+
 }
