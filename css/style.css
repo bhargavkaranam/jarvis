@@ -1,6 +1,16 @@
+html,body
+{
+	overflow-y: scroll;
+	height: 100%;
+}
 nav
 {
 	background: #21242e;
+}
+
+*
+{
+	box-sizing: border-box;
 }
 
 .commandBox
@@ -24,4 +34,14 @@ nav
 .command
 {
 	border: solid 2px #E0E0E0 !important;
+}
+
+.cards
+{
+	position: absolute;
+	width: 100%;
+	top: 90%;
+	height: 100%;
+	
+	
 }
