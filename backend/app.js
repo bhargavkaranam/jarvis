@@ -43,9 +43,9 @@ app.use('/', index);
 app.use('/users', users);
 
 io.on('connection', function(socket){
-	socket.on('battery', function(data){
-		console.log(data);
-	})
+	// socket.on('battery', function(data){
+	// 	console.log(data);
+	// })
 })
 
 // catch 404 and forward to error handler
