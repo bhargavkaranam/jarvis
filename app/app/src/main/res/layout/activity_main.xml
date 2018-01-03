@@ -4,24 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.bhargavkaranam.jarvistest.MainActivity">
+    tools:context="com.example.bhargavkaranam.jarvistest.MainActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="34dp"
+        android:layout_marginTop="187dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Command"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="192dp" />
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:layout_marginBottom="191dp"
+        android:layout_marginStart="45dp"
         android:onClick="sendToServer"
-        tools:layout_editor_absoluteX="129dp"
-        tools:layout_editor_absoluteY="272dp" />
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+
 </android.support.constraint.ConstraintLayout>

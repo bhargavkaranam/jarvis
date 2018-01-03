@@ -16,11 +16,12 @@ import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String SERVER_URL = "http://dc04af6b.ngrok.io/command";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Log.d("token" , FirebaseInstanceId.getInstance().getToken());
+        Log.d("token" , FirebaseInstanceId.getInstance().getToken());
     }
 
     public void sendToServer(View v)
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.post("http://dc04af6b.ngrok.io/command", params, new TextHttpResponseHandler() {
+        client.post(SERVER_URL, params, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
 
