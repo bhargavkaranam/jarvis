@@ -1,7 +1,7 @@
 
 var app = require('express');
 var router = app.Router();
-let socketMessages = require('./SocketMessages');
+
 
 
 router.test = function(req,res) {
@@ -9,6 +9,7 @@ router.test = function(req,res) {
 	if(req.body.command == "battery")
 	{		
 		req.io.emit('battery', true);
+		res.json({status: true, message: "I'll notify you the battery percentage soon."})
 
 	}
 

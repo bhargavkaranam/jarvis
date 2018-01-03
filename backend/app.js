@@ -21,6 +21,8 @@ app.io = io;
 
 var socketFunctions = require('./routes/socket');
 
+var notificationHandler = require('./routes/notificationHandler');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -43,9 +45,9 @@ app.use('/', index);
 app.use('/users', users);
 
 io.on('connection', function(socket){
-	// socket.on('battery', function(data){
-	// 	console.log(data);
-	// })
+	socket.on('battery', function(data){
+		notificationHandler.sendNotification(data, "battery");
+	})
 })
 
 // catch 404 and forward to error handler
