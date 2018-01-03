@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "battery.js": "^1.0.4"
+    "battery.js": "^1.0.4",
+    "shelljs": "^0.7.8"
   }
 }

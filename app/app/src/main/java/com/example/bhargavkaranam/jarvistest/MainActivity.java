@@ -16,7 +16,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String SERVER_URL = "http://dc04af6b.ngrok.io/command";
+    private String SERVER_URL = "http://df1825e3.ngrok.io/command";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

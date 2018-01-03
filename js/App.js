@@ -2,12 +2,22 @@ let socket = io('http://localhost:3000');
 
 
 socket.on('battery', function(data){
-	alert('called');
+	
 	getBatteryPercentage(false).then(function(percentage){
 		socket.emit('battery', percentage);
 	});
 })
 
+socket.on('sleep', function(data){
+	let shell = require('shelljs');
+	
+	shell.exec('pmset sleepnow', function(code, stdout, stderr){
+		socket.emit('sleep', true);
+	})
+  
+		
+	
+})
 
 function getBatteryPercentage(sendEmail)
 {

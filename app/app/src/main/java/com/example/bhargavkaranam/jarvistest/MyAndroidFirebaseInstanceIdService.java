@@ -19,6 +19,8 @@ public class MyAndroidFirebaseInstanceIdService extends FirebaseInstanceIdServic
         //Log the token
         Log.d(TAG, "Refreshed token: " + refreshedToken);
 
+
+
         //sendRegistrationToServer(refreshedToken);
     }
     private void sendRegistrationToServer(String token) {
