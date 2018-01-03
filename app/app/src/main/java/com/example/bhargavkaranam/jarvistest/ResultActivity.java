@@ -10,7 +10,7 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-        textView = (TextView)findViewById(R.id.textView1);
+        textView = (TextView)findViewById(R.id.textView);
         textView.setText("Welcome to the Result Activity");
     }
 }
