@@ -16,7 +16,8 @@ import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String SERVER_URL = "http://df1825e3.ngrok.io/command";
+    private String SERVER_URL = "http://4efc67f3.ngrok.io/command";
+    private String PASSWORD = "4Ef-X%qW^@~.r5^LZ_Q}S!h~dN&@5#N4";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         String command = ((EditText)findViewById(R.id.editText)).getText().toString();
         RequestParams params = new RequestParams();
         params.put("command", command);
-
+        params.put("password", PASSWORD);
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.post(SERVER_URL, params, new TextHttpResponseHandler() {

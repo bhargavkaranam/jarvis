@@ -48,6 +48,8 @@ io.on('connection', function(socket){
 	socket.on('battery', function(data){
 		notificationHandler.sendNotification(data, "battery");
 	})
+
+  
 })
 
 // catch 404 and forward to error handler

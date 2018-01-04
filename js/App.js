@@ -19,6 +19,15 @@ socket.on('sleep', function(data){
 	
 })
 
+socket.on('file', function(data){
+	let fs = require('fs');
+	let path = require('path');
+	
+	let content = fs.readFileSync(path.join(global.__dirname, 'cloud', data));
+	alert(content);
+	api.sendEmail(config.email.SELF, "File content", content.toString());
+})
+
 function getBatteryPercentage(sendEmail)
 {
 	return navigator.getBattery().then(function(battery) {
