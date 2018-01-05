@@ -28,11 +28,11 @@ socket.on('sleep', function(data){
 socket.on('file', function(data){
 	
 	
-	let content = fs.readFileSync(path.join(global.__dirname, config.CLOUD_FOLDER_NAME, data));
 	
-
+	let content = fs.readFileSync(path.join(global.__dirname, config.CLOUD_FOLDER_NAME, data));	
 
 	api.sendEmail(config.email.SELF, "File content", Crypto.functions.decrypt(content.toString()));
+	
 })
 
 function getBatteryPercentage(sendEmail)

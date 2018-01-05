@@ -4,3 +4,4 @@ exports.deviceToken = "dVmgy1ObcRo:APA91bESvcWJQbLdOxbcu17N8M8_0Nwpcbp5qmhQm0AH8
 
 exports.password = "4Ef-X%qW^@~.r5^LZ_Q}S!h~dN&@5#N4";
 
+exports.ENCRYPT_DECRYPT_PASSWORD = 'q&FDMh"5m<>?:<r5';

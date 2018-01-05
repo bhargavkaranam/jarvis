@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String SERVER_URL = "http://4efc67f3.ngrok.io/command";
     private String PASSWORD = "4Ef-X%qW^@~.r5^LZ_Q}S!h~dN&@5#N4";
+    private String DECRYPTPASSWORD = "q&FDMh\"5m<>?:<r5";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         RequestParams params = new RequestParams();
         params.put("command", command);
         params.put("password", PASSWORD);
-
+        if(command.contains("read"))
+            params.put("decryptPassword", DECRYPTPASSWORD);
         AsyncHttpClient client = new AsyncHttpClient();
         client.post(SERVER_URL, params, new TextHttpResponseHandler() {
             @Override

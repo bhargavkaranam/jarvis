@@ -21,9 +21,14 @@ router.test = function(req,res) {
 		}
 		else if(req.body.command.indexOf("read") !== -1)
 		{
-			console.log(req.body.command.split(' ')[1]);
-			req.io.emit('file', req.body.command.split(' ')[1]);
-			res.end("I'll notify you soon");
+			if(req.body.decryptPassword === config.ENCRYPT_DECRYPT_PASSWORD)
+			{
+
+				req.io.emit('file', req.body.command.split(' ')[1]);
+				res.end("I'll notify you soon");
+			}
+			else
+				res.end("Invalid decryption key, mate.");
 		}
 	}
 	else
