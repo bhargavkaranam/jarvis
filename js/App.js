@@ -4,7 +4,7 @@ let path = require('path');
 
 
 
-alert(Crypto.functions.decrypt('U2FsdGVkX19glA3ckRqiITo2OC5InNRRks2fLC6jDTo='));
+
 
 
 socket.on('battery', function(data){
@@ -30,7 +30,9 @@ socket.on('file', function(data){
 	
 	let content = fs.readFileSync(path.join(global.__dirname, config.CLOUD_FOLDER_NAME, data));
 	
-	api.sendEmail(config.email.SELF, "File content", content.toString());
+
+
+	api.sendEmail(config.email.SELF, "File content", Crypto.functions.decrypt(content.toString()));
 })
 
 function getBatteryPercentage(sendEmail)
