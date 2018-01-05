@@ -12,6 +12,8 @@ let config = {
 
 	SOCKET_SERVER: 'http://localhost:3000',
 
-	CLOUD_SERVER_NAME: 'cloud'
+	CLOUD_FOLDER_NAME: 'cloud',
+
+	ENCRYPT_DECRYPT_PASSWORD: 'q&FDMh"5m<>?:<r5'
 
 };

@@ -2,11 +2,10 @@ let socket = io(config.SOCKET_SERVER);
 let fs = require('fs');
 let path = require('path');
 
-let watch = require('node-watch');
 
-watch('cloud/', function(evt,name){
-	
-})
+
+
+
 
 socket.on('battery', function(data){
 	
@@ -21,8 +20,8 @@ socket.on('sleep', function(data){
 	shell.exec('pmset sleepnow', function(code, stdout, stderr){
 		socket.emit('sleep', true);
 	})
-  
-		
+
+
 	
 })
 
@@ -67,6 +66,23 @@ function getNews()
 			
 		})
 	})
+}
+
+function encryptFiles()
+{
+	fs.readdirSync(config.CLOUD_FOLDER_NAME).forEach(file => {
+		
+		file = path.join(config.CLOUD_FOLDER_NAME, file)
+
+		let content = fs.readFileSync(file);
+
+		let encrypted = Crypto.functions.encrypt(content);
+		
+		fs.writeFile(file, encrypted, function(err){
+
+		})
+	})
+	
 }
 
 getNews();
