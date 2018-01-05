@@ -10,5 +10,8 @@ let config = {
 		'SELF': 'bhargav.karanam@gmail.com'
 	},
 
+	SOCKET_SERVER: 'http://localhost:3000',
+
+	CLOUD_SERVER_NAME: 'cloud'
 
 };

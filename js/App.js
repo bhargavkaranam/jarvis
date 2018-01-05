@@ -1,5 +1,12 @@
-let socket = io('http://localhost:3000');
+let socket = io(config.SOCKET_SERVER);
+let fs = require('fs');
+let path = require('path');
 
+let watch = require('node-watch');
+
+watch('cloud/', function(evt,name){
+	
+})
 
 socket.on('battery', function(data){
 	
@@ -20,11 +27,10 @@ socket.on('sleep', function(data){
 })
 
 socket.on('file', function(data){
-	let fs = require('fs');
-	let path = require('path');
 	
-	let content = fs.readFileSync(path.join(global.__dirname, 'cloud', data));
-	alert(content);
+	
+	let content = fs.readFileSync(path.join(global.__dirname, config.CLOUD_FOLDER_NAME, data));
+	
 	api.sendEmail(config.email.SELF, "File content", content.toString());
 })
 
