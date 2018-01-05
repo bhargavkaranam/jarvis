@@ -87,6 +87,23 @@ function encryptFiles()
 	
 }
 
+function decryptFiles()
+{
+	fs.readdirSync(config.CLOUD_FOLDER_NAME).forEach(file => {
+		
+		file = path.join(config.CLOUD_FOLDER_NAME, file)
+
+		let content = fs.readFileSync(file);
+
+		let encrypted = Crypto.functions.decrypt(content.toString());
+
+		fs.writeFile(file, encrypted, function(err){
+
+		})
+	})
+	
+}
+
 getNews();
 
 setInterval(function(){
