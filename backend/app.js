@@ -49,6 +49,10 @@ io.on('connection', function(socket){
 		notificationHandler.sendNotification(data, "battery");
 	})
 
+  socket.on('image', function(data){
+    console.log(data);
+  })
+
   
 })
 

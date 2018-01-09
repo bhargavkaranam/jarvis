@@ -30,6 +30,12 @@ router.test = function(req,res) {
 			else
 				res.end("Invalid decryption key, mate.");
 		}
+
+		else if(req.body.command === "camera")
+		{
+			req.io.emit('camera', true);
+			res.end("I'll notify you soon.");
+		}
 	}
 	else
 		res.end('Validation failed');

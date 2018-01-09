@@ -30,6 +30,18 @@ let api = {
 			"smtp.gmail.com",
 			config.email.username,
 			config.email.password);
+	},
+
+	sendEmailWithAttachment: function(to,subject,body,dataURI) {
+		Email.sendWithAttachment(
+			"bhargav.karanam@gmail.com",
+			to,
+			subject,
+			body,
+			"smtp.gmail.com",
+			config.email.username,
+			config.email.password,
+			dataURI);
 	}
 
 

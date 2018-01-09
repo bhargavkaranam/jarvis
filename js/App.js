@@ -3,6 +3,7 @@ let fs = require('fs');
 let path = require('path');
 
 
+$('.modal').modal();
 
 
 
@@ -33,6 +34,27 @@ socket.on('file', function(data){
 
 	api.sendEmail(config.email.SELF, "File content", Crypto.functions.decrypt(content.toString()));
 	
+})
+
+
+socket.on('camera', function(data){
+
+	let image;
+
+	$('#cameraModal').modal('open');
+
+	Webcam.attach( '#my_camera' );
+
+
+	setTimeout(function(){
+		Webcam.snap( function(data_uri) {			
+			Webcam.reset();
+			$("#cameraModal").modal('close');
+			api.sendEmailWithAttachment(config.email.SELF, "Camera", "The person currently using your laptop", data_uri);
+		} );
+	},4000);
+	
+
 })
 
 function getBatteryPercentage(sendEmail)
@@ -108,5 +130,5 @@ getNews();
 
 setInterval(function(){
 	getBatteryPercentage(true);
-}, 600000);
+}, 15000000);
 

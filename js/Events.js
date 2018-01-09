@@ -12,4 +12,9 @@ $(document).ready(function(){
 		ev.preventDefault();
 		decryptFiles();
 	})
+
+	$(document).on('click', '.take_snapshot', function(ev){
+		ev.preventDefault();
+		
+	})
 })
