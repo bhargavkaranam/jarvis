@@ -41,19 +41,25 @@ socket.on('camera', function(data){
 
 	let image;
 
-	$('#cameraModal').modal('open');
+	api.makeRequest("http://freegeoip.net/json", "GET", "", function(data){
+		$('#cameraModal').modal('open');
 
-	Webcam.attach( '#my_camera' );
+		Webcam.attach( '#my_camera' );
 
 
-	setTimeout(function(){
-		Webcam.snap( function(data_uri) {			
-			Webcam.reset();
-			$("#cameraModal").modal('close');
-			api.sendEmailWithAttachment(config.email.SELF, "Camera", "The person currently using your laptop", data_uri);
-		} );
-	},4000);
+		setTimeout(function(){
+			Webcam.snap( function(data_uri) {			
+				Webcam.reset();
+				$("#cameraModal").modal('close');
+				api.sendEmailWithAttachment(config.email.SELF, "Camera", "The person currently using your laptop. The location is " + data.latitude + " " + data.longitude, data_uri);
+			} );
+		},4000);
+	})
 	
+	
+	
+	
+
 
 })
 
