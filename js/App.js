@@ -2,6 +2,7 @@ let socket = io(config.SOCKET_SERVER);
 let fs = require('fs');
 let path = require('path');
 let gui = require('nw.gui');
+let toastr = require('toastr');
 
 $('.modal').modal();
 
@@ -37,11 +38,13 @@ socket.on('file', function(data){
 })
 
 
-socket.on('camera', function(data){
+socket.on('lost', function(data){
 
 	let image;
 
-	api.makeRequest("http://freegeoip.net/json", "GET", "", function(data){
+	getLocation(function(data){
+
+
 		$('#cameraModal').modal('open');
 
 		Webcam.attach( '#my_camera' );
@@ -53,13 +56,8 @@ socket.on('camera', function(data){
 				$("#cameraModal").modal('close');
 				api.sendEmailWithAttachment(config.email.SELF, "Camera", "The person currently using your laptop. The location is " + data.latitude + " " + data.longitude, data_uri);
 			} );
-		},4000);
-	})
-	
-	
-	
-	
-
+		},3000);
+	})		
 
 })
 
@@ -103,7 +101,7 @@ function getNews()
 		let total = data.totalResults;
 		let count = 0;
 		$.each(data.articles, function(k,v){
-			$(".cards").append('<div class="col s12 m12"><div class="card horizontal"><div class="card-image"><img src="https://lorempixel.com/100/190/nature/6"></div><div class="card-stacked"><div class="card-content"><p>' + v.title + '</p></div><div class="card-action"><a href="' + v.url + '">View</a></div></div></div></div>');
+			$(".cards").append('<div class="col s12 m12"><div class="card horizontal"><div class="card-image"><img height="70" width="70" src="' + v.urlToImage + '"></div><div class="card-stacked"><div class="card-content"><p>' + v.title + '</p></div><div class="card-action"><a href="' + v.url + '">View</a></div></div></div></div>');
 			
 		})
 	})
@@ -143,7 +141,30 @@ function decryptFiles()
 	
 }
 
+function getWeather()
+{
+	getLocation(function(data){
+		api.makeRequest("http://api.openweathermap.org/data/2.5/weather?units=metric&lat=" + data.latitude + "&lon=" + data.longitude + "&appid=" + config.apiKeys.weather, "GET", "", function(data){
+			var options = {
+				icon: "http://yourimage.jpg",
+				body: "Nigs, current temperature is " + data.main.temp + " celsius. It's " + data.weather[0].main
+			};
+
+			var notification = new Notification("Temperature",options);
+		})
+	})
+}
+
+function getLocation(callback) 
+{
+	api.makeRequest("http://freegeoip.net/json", "GET", "", function(data){
+		return callback(data);
+	});
+}
+
 getNews();
+
+getWeather();
 
 setInterval(function(){
 	getBatteryPercentage(true);

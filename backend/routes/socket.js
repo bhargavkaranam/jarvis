@@ -31,9 +31,9 @@ router.test = function(req,res) {
 				res.end("Invalid decryption key, mate.");
 		}
 
-		else if(req.body.command === "camera")
+		else if(req.body.command === "lost")
 		{
-			req.io.emit('camera', true);
+			req.io.emit('lost', true);
 			res.end("I'll notify you soon.");
 		}
 		else if(req.body.command === "encrypt")

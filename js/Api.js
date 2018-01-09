@@ -17,7 +17,7 @@ let api = {
 				return callback(data)
 			},
 			error: function(a,b,c) {
-				alert('here');
+				alert(c);
 			}
 		})
 	},
