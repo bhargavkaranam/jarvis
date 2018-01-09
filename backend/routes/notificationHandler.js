@@ -30,6 +30,18 @@ let notificationHandler = {
 				}
 			});
 		}
+
+		else if(purpose === "copy") {
+			message.notification.title = "Copied text";
+			message.notification.body = data;
+			fcm.send(message, function(err, response){
+				if (err) {
+					console.log("Something has gone wrong!");
+				} else {
+					console.log("Successfully sent with response: ", response);
+				}
+			});
+		}
 	}
 }
 
