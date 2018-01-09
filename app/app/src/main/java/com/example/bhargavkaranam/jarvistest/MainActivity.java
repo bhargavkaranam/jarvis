@@ -16,7 +16,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String SERVER_URL = "http://4efc67f3.ngrok.io/command";
+    private String SERVER_URL = "http://9933e51d.ngrok.io/command";
     private String PASSWORD = "4Ef-X%qW^@~.r5^LZ_Q}S!h~dN&@5#N4";
     private String DECRYPTPASSWORD = "q&FDMh\"5m<>?:<r5";
     @Override
