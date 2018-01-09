@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         RequestParams params = new RequestParams();
         params.put("command", command);
         params.put("password", PASSWORD);
-        if(command.contains("read"))
+        if(command.contains("read") || command.contains("encrypt"))
             params.put("decryptPassword", DECRYPTPASSWORD);
         AsyncHttpClient client = new AsyncHttpClient();
         client.post(SERVER_URL, params, new TextHttpResponseHandler() {

