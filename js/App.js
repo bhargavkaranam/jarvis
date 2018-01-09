@@ -97,11 +97,11 @@ function getBatteryPercentage(sendEmail)
 function getNews()
 {
 
-	api.makeRequest(api.endPoints.newsapi.hindu, "get", "", function(data){
+	api.makeRequest(api.endPoints.newsapi.hindu, "GET", "", function(data){
 		let total = data.totalResults;
 		let count = 0;
 		$.each(data.articles, function(k,v){
-			$(".cards").append('<div class="col s12 m12"><div class="card horizontal"><div class="card-image"><img height="70" width="70" src="' + v.urlToImage + '"></div><div class="card-stacked"><div class="card-content"><p>' + v.title + '</p></div><div class="card-action"><a href="' + v.url + '">View</a></div></div></div></div>');
+			$(".cards").append('<div class="col s12 m12"><div class="card horizontal"><div class="card-image"><img height="120" width="70" src="' + v.urlToImage + '"></div><div class="card-stacked"><div class="card-content"><p>' + v.title + '</p></div><div class="card-action"><a href="' + v.url + '">View</a></div></div></div></div>');
 			
 		})
 	})
