@@ -144,7 +144,7 @@ function decryptFiles()
 function getWeather()
 {
 	getLocation(function(data){
-		api.makeRequest("http://api.openweathermap.org/data/2.5/weather?units=metric&lat=" + data.latitude + "&lon=" + data.longitude + "&appid=" + config.apiKeys.weather, "GET", "", function(data){
+		api.makeRequest(api.endPoints.weather + data.latitude + "&lon=" + data.longitude + "&appid=" + config.apiKeys.weather, "GET", "", function(data){
 			var options = {
 				icon: "http://yourimage.jpg",
 				body: "Nigs, current temperature is " + data.main.temp + " celsius. It's " + data.weather[0].main
@@ -157,7 +157,7 @@ function getWeather()
 
 function getLocation(callback) 
 {
-	api.makeRequest("http://freegeoip.net/json", "GET", "", function(data){
+	api.makeRequest(api.endPoints.location, "GET", "", function(data){
 		return callback(data);
 	});
 }
