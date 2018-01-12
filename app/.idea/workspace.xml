@@ -32,15 +32,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bhargavkaranam/jarvistest/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+            <state relative-caret-position="194">
+              <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2888#4034#0" expanded="true" />
-                <element signature="e#4033#4034#0" expanded="true" />
+                <element signature="e#3071#3827#0" expanded="true" />
+                <element signature="e#3826#3827#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -69,10 +69,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NotificationService.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NotificationService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bhargavkaranam/jarvistest/NotificationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
+            <state relative-caret-position="206">
               <caret line="32" column="57" lean-forward="false" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -1903,8 +1903,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_fingerprint.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bhargavkaranam/jarvistest/MyAndroidFirebaseMsgService.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/bhargavkaranam/jarvistest/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/bhargavkaranam/jarvistest/NotificationService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/bhargavkaranam/jarvistest/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -2514,8 +2514,8 @@
           <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2888#4034#0" expanded="true" />
-            <element signature="e#4033#4034#0" expanded="true" />
+            <element signature="e#3071#3827#0" expanded="true" />
+            <element signature="e#3826#3827#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2588,8 +2588,8 @@
           <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2888#4034#0" expanded="true" />
-            <element signature="e#4033#4034#0" expanded="true" />
+            <element signature="e#3071#3827#0" expanded="true" />
+            <element signature="e#3826#3827#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2713,24 +2713,24 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bhargavkaranam/jarvistest/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bhargavkaranam/jarvistest/NotificationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+        <state relative-caret-position="206">
+          <caret line="32" column="57" lean-forward="false" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2888#4034#0" expanded="true" />
-            <element signature="e#4033#4034#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bhargavkaranam/jarvistest/NotificationService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/bhargavkaranam/jarvistest/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="32" column="57" lean-forward="false" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
+        <state relative-caret-position="194">
+          <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3071#3827#0" expanded="true" />
+            <element signature="e#3826#3827#0" expanded="true" />
           </folding>
         </state>
       </provider>

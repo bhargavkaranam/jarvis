@@ -82,18 +82,23 @@ socket.on('NEW_NOTIFICATION', function(data){
 	var options = {
 		icon: "http://yourimage.jpg",
 		body: data.text
-	};
-
-	var notification = new Notification(data.title,options);
+	};	
 
 	$(".notificationContainer").prepend('<li><a>' + data.text + '</a></li>');
+
+	let clipboard = gui.Clipboard.get();
+	let text = clipboard.set(data.text, 'text');
+	
+	showNotification(options, data.title)
+
+	
 })
 
 
 
-function showNotification(icon, body, title)
+function showNotification(options, title)
 {
-
+	let notification = new Notification(title,options);
 }
 
 function getBatteryPercentage(sendEmail)
@@ -173,8 +178,8 @@ function getWeather()
 				icon: "http://yourimage.jpg",
 				body: "Nigs, current temperature is " + data.main.temp + " celsius. It's " + data.weather[0].main
 			};
-
-			var notification = new Notification("Temperature",options);
+			showNotification(options, "Temperature");	
+			
 		})
 	})
 }

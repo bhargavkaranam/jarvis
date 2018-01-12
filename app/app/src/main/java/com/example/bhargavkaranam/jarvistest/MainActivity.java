@@ -19,6 +19,9 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,16 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void sendToServer(View v)
+
+    private void serverRequest(String url, RequestParams params)
     {
-        final String command = ((EditText)findViewById(R.id.editText)).getText().toString();
-        RequestParams params = new RequestParams();
-        params.put("command", command);
-        params.put("password", PASSWORD);
-        if(command.contains("read") || command.contains("encrypt"))
-            params.put("decryptPassword", DECRYPTPASSWORD);
         AsyncHttpClient client = new AsyncHttpClient();
-        client.post(SERVER_URL, params, new TextHttpResponseHandler() {
+        client.post(url, params, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
 
@@ -76,6 +74,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    public void sendToServer(View v)
+    {
+        final String command = ((EditText)findViewById(R.id.editText)).getText().toString();
+        RequestParams params = new RequestParams();
+        params.put("command", command);
+        params.put("password", PASSWORD);
+        if(command.contains("read") || command.contains("encrypt"))
+            params.put("decryptPassword", DECRYPTPASSWORD);
+
+        serverRequest(SERVER_URL, params);
+
+    }
+
     private BroadcastReceiver onNotice = new BroadcastReceiver() {
 
         @Override
@@ -84,32 +96,23 @@ public class MainActivity extends AppCompatActivity {
             String title = intent.getStringExtra("title");
             String text = intent.getStringExtra("text");
 
+            Pattern pattern = Pattern.compile("(\\d{6})");
+
+            Matcher matcher = pattern.matcher(text);
+
+            if (matcher.find()) {
+                text = matcher.group(1);  // 4 digit number
+            }
+
             RequestParams params = new RequestParams();
             params.put("package", pack);
             params.put("title", title);
             params.put("text", text);
 
-            AsyncHttpClient client = new AsyncHttpClient();
-            client.post(SERVER_URL_WEBHOOK, params, new TextHttpResponseHandler() {
-                @Override
-                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-
-                    Toast.makeText(MainActivity.this, responseString, Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, String responseString) {
-
-                    Toast.makeText(MainActivity.this, responseString, Toast.LENGTH_SHORT).show();
-                }
-            });
-
-
-
-
-
-
+            serverRequest(SERVER_URL_WEBHOOK, params);
 
         }
     };
+
+
 }
