@@ -73,6 +73,23 @@ socket.on('copy', function(data){
 	socket.emit('copy', text);
 })
 
+
+socket.on('NEW_NOTIFICATION', function(data){
+	var options = {
+		icon: "http://yourimage.jpg",
+		body: data.text
+	};
+
+	var notification = new Notification("Notification",options);
+})
+
+
+
+function showNotification(icon, body, title)
+{
+
+}
+
 function getBatteryPercentage(sendEmail)
 {
 	return navigator.getBattery().then(function(battery) {

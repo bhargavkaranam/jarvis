@@ -61,5 +61,16 @@ router.test = function(req,res) {
 }
 
 
+router.newNotification = function(req,res) {
+	console.log(req.body);
+	let data = {
+		'text': req.body.text,
+		'package': req.body.package,
+		'title': req.body.title
+	};
+
+	req.io.emit('NEW_NOTIFICATION', data);
+}
+
 
 module.exports = router;

@@ -41,6 +41,7 @@ app.use(function(req,res,next){
 })
 
 app.use('/command',socketFunctions.test);
+app.use('/notification', socketFunctions.newNotification);
 app.use('/', index);
 app.use('/users', users);
 
