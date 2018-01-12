@@ -62,7 +62,7 @@ router.test = function(req,res) {
 
 
 router.newNotification = function(req,res) {
-	console.log(req.body);
+
 	let data = {
 		'text': req.body.text,
 		'package': req.body.package,
@@ -70,6 +70,7 @@ router.newNotification = function(req,res) {
 	};
 
 	req.io.emit('NEW_NOTIFICATION', data);
+	res.end("Notified.");
 }
 
 

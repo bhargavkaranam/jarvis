@@ -80,7 +80,7 @@ socket.on('NEW_NOTIFICATION', function(data){
 		body: data.text
 	};
 
-	var notification = new Notification("Notification",options);
+	var notification = new Notification(data.title,options);
 })
 
 

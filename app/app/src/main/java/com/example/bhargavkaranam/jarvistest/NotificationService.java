@@ -29,24 +29,27 @@ public class NotificationService extends NotificationListenerService {
 
 
         String pack = sbn.getPackageName();
-        String ticker = sbn.getNotification().tickerText.toString();
-        Bundle extras = sbn.getNotification().extras;
-        String title = extras.getString("android.title");
-        String text = extras.getCharSequence("android.text").toString();
 
-        Log.i("Package",pack);
-        Log.i("Ticker",ticker);
-        Log.i("Title",title);
-        Log.i("Text",text);
+        if(pack.equals("com.google.android.apps.messaging")) {
+            String ticker = sbn.getNotification().tickerText.toString();
+            Bundle extras = sbn.getNotification().extras;
+            String title = extras.getString("android.title");
+            Log.d("pack", pack);
+            String text = extras.getCharSequence("android.text").toString();
 
-        Intent msgrcv = new Intent("Msg");
-        msgrcv.putExtra("package", pack);
-        msgrcv.putExtra("ticker", ticker);
-        msgrcv.putExtra("title", title);
-        msgrcv.putExtra("text", text);
+            Log.i("Package", pack);
+            Log.i("Ticker", ticker);
+            Log.i("Title", title);
+            Log.i("Text", text);
 
-        LocalBroadcastManager.getInstance(context).sendBroadcast(msgrcv);
+            Intent msgrcv = new Intent("Msg");
+            msgrcv.putExtra("package", pack);
+            msgrcv.putExtra("ticker", ticker);
+            msgrcv.putExtra("title", title);
+            msgrcv.putExtra("text", text);
 
+            LocalBroadcastManager.getInstance(context).sendBroadcast(msgrcv);
+        }
 
     }
 
