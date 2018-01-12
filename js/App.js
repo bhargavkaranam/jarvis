@@ -6,6 +6,10 @@ let toastr = require('toastr');
 
 $('.modal').modal();
 
+$('.dropdown-button').dropdown({
+	constrainWidth: false
+});
+
 $(".name").html("Hi " + config.name);
 
 
@@ -81,6 +85,8 @@ socket.on('NEW_NOTIFICATION', function(data){
 	};
 
 	var notification = new Notification(data.title,options);
+
+	$(".notificationContainer").prepend('<li><a>' + data.text + '</a></li>');
 })
 
 
