@@ -6,6 +6,7 @@ let toastr = require('toastr');
 
 $('.modal').modal();
 
+$(".name").html("Hi " + config.name);
 
 
 

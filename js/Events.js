@@ -15,6 +15,19 @@ $(document).ready(function(){
 
 	$(document).on('click', '.take_snapshot', function(ev){
 		ev.preventDefault();
-		
+
 	})
+
+	$(document).on('click', '.settings', function(ev){
+		ev.preventDefault();
+		fillSettingsForm();
+		$("#settingsModal").modal('open');
+	})
+
+
+	function fillSettingsForm() {
+		
+		$("#name").val(config.name);
+	}
+
 })

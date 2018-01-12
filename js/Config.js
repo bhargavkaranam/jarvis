@@ -1,4 +1,5 @@
 let config = {
+	name: 'Bhargav',
 	apiKeys : {
 		'newsapi': 'f59a44cc26e542deadc372e25bfbe93b',
 		'sms': '189876AXIppBv13yC5a425a6c',
