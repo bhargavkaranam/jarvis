@@ -88,12 +88,19 @@ socket.on('NEW_NOTIFICATION', function(data){
 
 	let clipboard = gui.Clipboard.get();
 	let text = clipboard.set(data.text, 'text');
-	
+
 	showNotification(options, data.title)
 
 	
 })
 
+
+socket.on('NEW_IMAGE', function(data){
+	let buf = new Buffer(data, 'base64');
+	fs.writeFile(path.join(config.CLOUD_FOLDER_NAME,'image.png'), buf, function(err){
+		
+	});
+})
 
 
 function showNotification(options, title)

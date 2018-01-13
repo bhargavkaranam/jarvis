@@ -1,14 +1,22 @@
 package com.example.bhargavkaranam.jarvistest;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -19,6 +27,11 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,11 +39,19 @@ import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String BASE_URL = "http://9933e51d.ngrok.io/";
+    private static final int CAMERA_REQUEST = 1;
+
+    private String BASE_URL = "http://8c643a0a.ngrok.io/";
     private String SERVER_URL = BASE_URL + "command";
     private String SERVER_URL_WEBHOOK = BASE_URL + "/notification";
+    private String SERVER_URL_PHOTO = BASE_URL + "/image";
+
     private String PASSWORD = "4Ef-X%qW^@~.r5^LZ_Q}S!h~dN&@5#N4";
     private String DECRYPTPASSWORD = "q&FDMh\"5m<>?:<r5";
+
+    Uri photoURI;
+
+    private String mCurrentPhotoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +105,11 @@ public class MainActivity extends AppCompatActivity {
         if(command.contains("read") || command.contains("encrypt"))
             params.put("decryptPassword", DECRYPTPASSWORD);
 
-        serverRequest(SERVER_URL, params);
+        if(command.contains("camera"))
+            triggerCamera();
+        else
+            serverRequest(SERVER_URL, params);
+
 
     }
 
@@ -114,5 +139,79 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
+
+            String path = mCurrentPhotoPath.toString();
+            String base64 = convertToBase64(path);
+            RequestParams params = new RequestParams();
+            params.put("image", base64);
+
+            serverRequest(SERVER_URL_PHOTO, params);
+
+        }
+    }
+
+
+
+
+
+
+
+
+    private void triggerCamera() {
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        File photoFile = null;
+        try {
+            //THIS CREATES A JPG FILE AND PASSES THE PATH TO THE CAMERA SO THAT THE IMAGE IS STORED THERE
+            photoFile = createImageFile();
+        } catch (IOException ex) {
+            // Error occurred while creating the File
+
+        }
+        // Continue only if the File was successfully created
+        if (photoFile != null) {
+            photoURI = FileProvider.getUriForFile(this,
+                    "com.example.android.fileprovider",
+                    photoFile);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+
+
+            startActivityForResult(intent, CAMERA_REQUEST);
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+
+    private String convertToBase64(String imagePath)
+    {
+        Bitmap bm = BitmapFactory.decodeFile(imagePath);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+        bm.compress(Bitmap.CompressFormat.JPEG, 40, baos);
+
+        byte[] byteArrayImage = baos.toByteArray();
+
+        String encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
+
+        return encodedImage;
+    }
 
 }

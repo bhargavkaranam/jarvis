@@ -73,5 +73,12 @@ router.newNotification = function(req,res) {
 	res.end("Notified.");
 }
 
+router.image = function(req,res) {
+
+	req.io.emit('NEW_IMAGE', req.body.image);
+	res.end('Image will be stored on your device.');
+
+}
+
 
 module.exports = router;
