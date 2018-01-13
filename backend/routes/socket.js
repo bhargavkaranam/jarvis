@@ -75,8 +75,12 @@ router.newNotification = function(req,res) {
 
 router.image = function(req,res) {
 
-	req.io.emit('NEW_IMAGE', req.body.image);
-	res.end('Image will be stored on your device.');
+	let fileName = Date.now(); 
+	req.io.emit('NEW_IMAGE', {
+		'image': req.body.image,
+		'filename': fileName
+	});
+	res.end('Image will be stored on your device. The filename is ' + fileName + '.png');
 
 }
 

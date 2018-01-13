@@ -96,9 +96,9 @@ socket.on('NEW_NOTIFICATION', function(data){
 
 
 socket.on('NEW_IMAGE', function(data){
-	let buf = new Buffer(data, 'base64');
-	fs.writeFile(path.join(config.CLOUD_FOLDER_NAME,'image.png'), buf, function(err){
-		
+	let buf = new Buffer(data.image, 'base64');
+	fs.writeFile(path.join(config.CLOUD_FOLDER_NAME, data.filename + '.png'), buf, function(err){
+
 	});
 })
 
